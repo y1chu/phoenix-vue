@@ -1,82 +1,113 @@
 <template>
-    <section class="contact">
-        <h2>Contact Me</h2>
-        <form @submit.prevent="submitForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" v-model="formData.name" required />
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="formData.email" required />
-
-            <label for="message">Message:</label>
-            <textarea id="message" v-model="formData.message" required></textarea>
-
-            <button type="submit">Send</button>
-        </form>
+    <section class="contact" data-aos="fade-up">
+        <div class="contact-container">
+            <h2 class="contact-header">Want to know more?</h2>
+            <p class="contact-description">
+                Whether you'd like to debate which Final Fantasy reigns supreme, have questions about FFXIV, or are
+                interested in working together, I'd love to hear from you! Feel free to reach out to me via email or
+                LinkedIn.
+            </p>
+            <div class="contact-button-container">
+                <a href="mailto:y1chu@ucsd.edu" class="contact-btn">
+                    <font-awesome-icon icon="envelope" class="icon" />
+                    <span class="t">Contact Me!</span>
+                </a>
+            </div>
+        </div>
     </section>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            formData: {
-                name: '',
-                email: '',
-                message: ''
-            }
-        };
-    },
-    methods: {
-        submitForm() {
-            console.log('Form Submitted:', this.formData);
-            // Here you can handle form submission (e.g., use EmailJS, API calls, etc.)
-            alert('Form submitted successfully!');
-            // Clear form
-            this.formData.name = '';
-            this.formData.email = '';
-            this.formData.message = '';
-        }
-    }
+    name: "ContactSection",
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .contact {
-}
-
-form {
     display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 1rem;
-    font-weight: bold;
-}
-
-input,
-textarea {
-    padding: 0.5rem;
-    margin-top: 0.5rem;
-    border: none;   
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-button {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    background-color: #ff4500;
-    /* Orange fire-like color */
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    text-align: center;
+    font-family: 'Fira Sans', sans-serif;
 }
 
-button:hover {
-    background-color: #ff6347;
-    /* Slightly lighter red for hover effect */
+.contact-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.contact-header {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.contact-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.contact-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Button Styles */
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 220px;
+    height: 50px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.35s;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.contact-btn span {
+    position: relative;
+    z-index: 2; /* Keep text on top of background */
+}
+
+.contact-btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ff7f00;
+    transition: all 0.35s;
+    z-index: 1;
+}
+
+.contact-btn:hover {
+    color: white;
+}
+
+.contact-btn:hover:after {
+    width: 100%;
+}
+
+/* Icon Styling */
+.contact-btn .icon {
+    font-size: 18px;
+    margin-right: 10px;
+    z-index: 2; /* Keep the icon on top */
+    transition: all 0.35s;
 }
 </style>

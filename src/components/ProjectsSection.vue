@@ -24,7 +24,8 @@
 
                 <!-- Image Gallery -->
                 <div class="gallery">
-                    <img :src="project.images[currentImageIndex[index]]" alt="Project image" class="gallery-image">
+                    <img :src="project.images[currentImageIndex[index]]" alt="Project image" class="gallery-image"
+                        :ref="'galleryImage-' + index">
                     <button class="gallery-prev" @click="prevImage(index)">
                         <font-awesome-icon :icon="['fas', 'chevron-left']" />
                     </button>
@@ -37,13 +38,15 @@
     </section>
 </template>
 
+
 <script>
 
 export default {
 
     data() {
         return {
-            currentImageIndex: [0, 0, 0], // Track the current image index for each project
+            currentImageIndex: [0, 0, 0],
+            transitioning: [false, false, false],
             projects: [
                 {
                     name: "ACGCreator - Web Game Engine",
@@ -85,19 +88,61 @@ export default {
                         new URL('@/assets/projects/acg-lobby-2.png', import.meta.url).href,
                         new URL('@/assets/projects/acg-lobby-3.png', import.meta.url).href
                     ]
+                },
+                {
+                    name: "Personal Portfolio - Dr. Chu",
+                    description: `
+            A custom-built personal portfolio for Dr. William Chu, showcasing his professional background, 
+            past work, experience, education, awards, and research contributions. 
+            Includes an integrated blog system and a secure login feature for managing posts.
+        `,
+                    techStack: ["Vue.js", "Nuxt.js", "Firebase", "Contentful"],
+                    contributions: [
+                        "Blog System: Developed a fully functional blog feature where Dr. Chu can write and post articles, enabling him to share his research and thoughts.",
+                        "Portfolio Showcase: Created an area for showcasing Dr. Chu's significant research work and contributions, with the ability to upload project descriptions and images.",
+                        "Firebase Authentication: Set up a login system using Firebase.",
+                        "Admin Dashboard: Built an admin interface for easy management of posts."
+                    ],
+                    liveDemo: "https://朱醫師的骨科園區.com",
+                    images: [
+                        new URL('@/assets/projects/dr-portfolio-1.png', import.meta.url).href,
+                        new URL('@/assets/projects/dr-portfolio-2.png', import.meta.url).href,
+                        new URL('@/assets/projects/dr-portfolio-3.png', import.meta.url).href
+                    ]
                 }
             ]
         };
     },
     methods: {
         nextImage(index) {
-            const project = this.projects[index];
-            this.currentImageIndex[index] = (this.currentImageIndex[index] + 1) % project.images.length;
+            if (this.transitioning[index]) return; // Prevent clicking while transitioning
+            this.transitioning[index] = true;
+
+            // Use $refs to get the correct image element for this project
+            const currentImage = this.$refs[`galleryImage-${index}`][0];
+            currentImage.classList.add("fade-out");
+
+            // Wait for fade-out to complete before changing image
+            setTimeout(() => {
+                this.currentImageIndex[index] = (this.currentImageIndex[index] + 1) % this.projects[index].images.length;
+                currentImage.classList.remove("fade-out"); // Remove fade-out class
+                this.transitioning[index] = false; // Allow next transitions
+            }, 500); // Matches the CSS transition time
         },
         prevImage(index) {
-            const project = this.projects[index];
-            this.currentImageIndex[index] =
-                (this.currentImageIndex[index] - 1 + project.images.length) % project.images.length;
+            if (this.transitioning[index]) return; // Prevent clicking while transitioning
+            this.transitioning[index] = true;
+
+            // Use $refs to get the correct image element for this project
+            const currentImage = this.$refs[`galleryImage-${index}`][0];
+            currentImage.classList.add("fade-out");
+
+            // Wait for fade-out to complete before changing image
+            setTimeout(() => {
+                this.currentImageIndex[index] = (this.currentImageIndex[index] - 1 + this.projects[index].images.length) % this.projects[index].images.length;
+                currentImage.classList.remove("fade-out"); // Remove fade-out class
+                this.transitioning[index] = false; // Allow next transitions
+            }, 500); // Matches the CSS transition time
         }
     }
 };
@@ -139,6 +184,7 @@ h3 {
     font-size: 1.8rem;
     margin-bottom: 1rem;
     color: #ffc400;
+    font-weight: bold;
 }
 
 p {
@@ -148,7 +194,6 @@ p {
 
 .gallery {
     position: relative;
-    /* Ensure the buttons are positioned relative to the gallery container */
     width: 800px;
     display: flex;
     justify-content: center;
@@ -160,7 +205,14 @@ p {
     object-fit: contain;
     border-radius: 10px;
     position: relative;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
 }
+
+.gallery-image.fade-out {
+    opacity: 0;
+}
+
 
 .gallery-prev,
 .gallery-next {
@@ -183,17 +235,16 @@ p {
 
 .gallery-prev {
     left: 10px;
-    /* Align to the left edge */
 }
 
 .gallery-next {
     right: 10px;
-    /* Align to the right edge */
 }
 
 button:hover {
     background-color: #e03e00;
 }
+
 
 
 .tech-used {
@@ -208,6 +259,10 @@ button:hover {
         padding: 0.5rem 1rem;
         border-radius: 8px;
     }
+
+    li:hover {
+        background-color: rgba(255, 68, 0, 0.8);
+    }
 }
 
 .project-links a {
@@ -216,9 +271,30 @@ button:hover {
     text-decoration: none;
 }
 
-.project-links a:hover {
-    text-decoration: underline;
+.project-links a {
+    position: relative;
+    color: #ffc400;
+    text-decoration: none;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #ffc400;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+        transform: scaleX(1);
+    }
 }
+
 
 .contributions {
     margin-bottom: 1rem;

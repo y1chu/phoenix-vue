@@ -6,7 +6,7 @@
             <p class="middle-intro">I play games, and I make them.</p>
             <p class="small-description">
                 I'm a software engineer with a B.S. in Mathematics and Computer Science from UC San Diego. 
-                Skilled in Unity game development and backed by expertise in C#, C++, I bridge the gap between 
+                Skilled in Unity game development and backed by expertise in C# and C++, I bridge the gap between 
                 tech and artistry, inspired by gaming legends like Final Fantasy X.
             </p>
         </div>
