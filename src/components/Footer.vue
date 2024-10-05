@@ -2,13 +2,13 @@
     <footer class="footer">
         <!-- Social Media Icons -->
         <div class="footer-icons">
-            <button class="icon-btn" @click="openLink('https://www.youtube.com')" aria-label="YouTube">
+            <button class="icon-btn" @click="openLink('https://www.youtube.com/channel/UCgW0O1BlHVrl1WfIZ6rG0Aw')" aria-label="YouTube">
                 <font-awesome-icon :icon="['fab', 'youtube']" />
             </button>
-            <button class="icon-btn" @click="openLink('https://www.linkedin.com')" aria-label="LinkedIn">
+            <button class="icon-btn" @click="openLink('https://www.linkedin.com/in/ying-chen-chu/')" aria-label="LinkedIn">
                 <font-awesome-icon :icon="['fab', 'linkedin']" />
             </button>
-            <button class="icon-btn" @click="openLink('https://www.github.com')" aria-label="GitHub">
+            <button class="icon-btn" @click="openLink('https://github.com/y1chu')" aria-label="GitHub">
                 <font-awesome-icon :icon="['fab', 'github']" />
             </button>
         </div>
