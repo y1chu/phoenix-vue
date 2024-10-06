@@ -1,13 +1,13 @@
 <template>
     <section class="projects" data-aos="fade-up">
         <div class="project-list">
-            <h2>Projects</h2>
-            <div v-for="(project, index) in projects" :key="index" class="project">
+            <h2>{{ $t('projects.title') }}</h2>
+            <div v-for="(project, index) in localizedProjects" :key="index" class="project">
                 <div class="project-info">
                     <h3>{{ project.name }}</h3>
                     <p>{{ project.description }}</p>
                     <div class="contributions">
-                        <h4>Contributions:</h4>
+                        <h4>{{ $t('projects.contributions') }}</h4>
                         <ul>
                             <li v-for="(contribution, i) in project.contributions" :key="i">{{ contribution }}</li>
                         </ul>
@@ -17,8 +17,10 @@
                         <li v-for="tech in project.techStack" :key="tech">{{ tech }}</li>
                     </ul>
                     <div class="project-links">
-                        <a v-if="project.liveDemo" :href="project.liveDemo" target="_blank">Official Site</a>
-                        <a v-if="project.video" :href="project.video" target="_blank">Video Walkthrough</a>
+                        <a v-if="project.liveDemo" :href="project.liveDemo" target="_blank">{{ $t('projects.liveDemo')
+                            }}</a>
+                        <a v-if="project.video" :href="project.video" target="_blank">{{ $t('projects.videoWalkthrough')
+                            }}</a>
                     </div>
                 </div>
 
@@ -38,28 +40,31 @@
     </section>
 </template>
 
-
 <script>
-
 export default {
-
     data() {
         return {
             currentImageIndex: [0, 0, 0],
-            transitioning: [false, false, false],
-            projects: [
+            transitioning: [false, false, false]
+        };
+    },
+    computed: {
+        localizedProjects() {
+            return [
                 {
-                    name: "ACGCreator - Web Game Engine",
-                    description: `
-            ACGCreator is an interactive visual novel game engine that allows creators to build immersive storytelling experiences without any coding background.
-            I contributed to both the frontend and backend, focusing on optimizing the game’s performance and enhancing user experience.
-        `,
-                    techStack: ["Unity", "C#", "Vue.js", "Nuxt.js"],
+                    name: this.$t('projects.acgCreator.name'),
+                    description: this.$t('projects.acgCreator.description'),
+                    techStack: [
+                        this.$t('projects.acgCreator.techStack.unity'),
+                        this.$t('projects.acgCreator.techStack.cSharp'),
+                        this.$t('projects.acgCreator.techStack.vueJs'),
+                        this.$t('projects.acgCreator.techStack.nuxtJs')
+                    ], // Translation for tech stack
                     contributions: [
-                        "Frontend Development: Implemented key components of the game editor using Vue.js and Nuxt.js, focusing on the design and functionality of the web engine.",
-                        "Mobile Optimization: Tailored the visual novel interface for mobile platforms using Unity, ensuring smooth performance across devices.",
-                        "Web Interface Development: Contributed to the architecture and layout of the web editor, allowing creators to easily build and preview their games."
-                    ],
+                        this.$t('projects.acgCreator.contributions.frontend'),
+                        this.$t('projects.acgCreator.contributions.mobileOptimization'),
+                        this.$t('projects.acgCreator.contributions.webInterface')
+                    ], // Translation for contributions
                     liveDemo: "https://acgcreator.com/ja-JP",
                     video: "https://www.youtube.com/watch?v=iKEDTVtmtl0",
                     images: [
@@ -70,17 +75,19 @@ export default {
                     ]
                 },
                 {
-                    name: "ACGCreator - Creator Studio",
-                    description: `
-            The Creator Studio is the central hub for game developers to manage and publish their visual novel projects. 
-            It allows creators to upload assets, set pricing, and submit their games for review before publishing.
-        `,
-                    techStack: ["Vue.js", "Nuxt.js", "GraphQL", "Node.js", "JavaScript"],
+                    name: this.$t('projects.creatorStudio.name'),
+                    description: this.$t('projects.creatorStudio.description'),
+                    techStack: [
+                        this.$t('projects.creatorStudio.techStack.vueJs'),
+                        this.$t('projects.creatorStudio.techStack.nuxtJs'),
+                        this.$t('projects.creatorStudio.techStack.graphQl'),
+                        this.$t('projects.creatorStudio.techStack.nodeJs')
+                    ],
                     contributions: [
-                        "Asset Management: Developed the interface for creators to upload and manage screenshots, trailers, and other game assets.",
-                        "Pricing & Monetization: Implemented functionality for creators to set the price for their games and manage in-app purchases.",
-                        "Game Submission Flow: Designed and implemented the workflow for creators to submit their games for review, enabling an efficient review process for the team.",
-                        "Approval & Publishing: Contributed to the review system that allows admins to review submissions and either approve or reject games based on quality and compliance."
+                        this.$t('projects.creatorStudio.contributions.assetManagement'),
+                        this.$t('projects.creatorStudio.contributions.pricingMonetization'),
+                        this.$t('projects.creatorStudio.contributions.submissionFlow'),
+                        this.$t('projects.creatorStudio.contributions.approvalPublishing')
                     ],
                     liveDemo: "https://acgcreator.com/ja-JP",
                     images: [
@@ -90,18 +97,19 @@ export default {
                     ]
                 },
                 {
-                    name: "Personal Portfolio - Dr. Chu",
-                    description: `
-            A custom-built personal portfolio for Dr. William Chu, showcasing his professional background, 
-            past work, experience, education, awards, and research contributions. 
-            Includes an integrated blog system and a secure login feature for managing posts.
-        `,
-                    techStack: ["Vue.js", "Nuxt.js", "Firebase", "Contentful"],
+                    name: this.$t('projects.drPortfolio.name'),
+                    description: this.$t('projects.drPortfolio.description'),
+                    techStack: [
+                        this.$t('projects.drPortfolio.techStack.vueJs'),
+                        this.$t('projects.drPortfolio.techStack.nuxtJs'),
+                        this.$t('projects.drPortfolio.techStack.firebase'),
+                        this.$t('projects.drPortfolio.techStack.contentful')
+                    ],
                     contributions: [
-                        "Blog System: Developed a fully functional blog feature where Dr. Chu can write and post articles, enabling him to share his research and thoughts.",
-                        "Portfolio Showcase: Created an area for showcasing Dr. Chu's significant research work and contributions, with the ability to upload project descriptions and images.",
-                        "Firebase Authentication: Set up a login system using Firebase.",
-                        "Admin Dashboard: Built an admin interface for easy management of posts."
+                        this.$t('projects.drPortfolio.contributions.blogSystem'),
+                        this.$t('projects.drPortfolio.contributions.portfolioShowcase'),
+                        this.$t('projects.drPortfolio.contributions.firebaseAuth'),
+                        this.$t('projects.drPortfolio.contributions.adminDashboard')
                     ],
                     liveDemo: "https://朱醫師的骨科園區.com",
                     images: [
@@ -110,43 +118,40 @@ export default {
                         new URL('@/assets/projects/dr-portfolio-3.png', import.meta.url).href
                     ]
                 }
-            ]
-        };
+            ];
+        }
     },
     methods: {
         nextImage(index) {
-            if (this.transitioning[index]) return; // Prevent clicking while transitioning
+            if (this.transitioning[index]) return;
             this.transitioning[index] = true;
-
-            // Use $refs to get the correct image element for this project
             const currentImage = this.$refs[`galleryImage-${index}`][0];
             currentImage.classList.add("fade-out");
 
-            // Wait for fade-out to complete before changing image
             setTimeout(() => {
-                this.currentImageIndex[index] = (this.currentImageIndex[index] + 1) % this.projects[index].images.length;
-                currentImage.classList.remove("fade-out"); // Remove fade-out class
-                this.transitioning[index] = false; // Allow next transitions
-            }, 500); // Matches the CSS transition time
+                this.currentImageIndex[index] = (this.currentImageIndex[index] + 1) % this.localizedProjects[index].images.length;
+                currentImage.classList.remove("fade-out");
+                this.transitioning[index] = false;
+            }, 500);
         },
         prevImage(index) {
-            if (this.transitioning[index]) return; // Prevent clicking while transitioning
+            if (this.transitioning[index]) return;
             this.transitioning[index] = true;
 
-            // Use $refs to get the correct image element for this project
             const currentImage = this.$refs[`galleryImage-${index}`][0];
             currentImage.classList.add("fade-out");
 
-            // Wait for fade-out to complete before changing image
             setTimeout(() => {
-                this.currentImageIndex[index] = (this.currentImageIndex[index] - 1 + this.projects[index].images.length) % this.projects[index].images.length;
-                currentImage.classList.remove("fade-out"); // Remove fade-out class
-                this.transitioning[index] = false; // Allow next transitions
-            }, 500); // Matches the CSS transition time
+                this.currentImageIndex[index] = (this.currentImageIndex[index] - 1 + this.localizedProjects[index].images.length) % this.localizedProjects[index].images.length;
+                currentImage.classList.remove("fade-out");
+                this.transitioning[index] = false;
+            }, 500);
         }
     }
 };
 </script>
+
+
 
 <style scoped lang="scss">
 .projects {

@@ -1,43 +1,34 @@
 <template>
   <div id="app" class="portfolio">
-    <!-- Single Background for Smooth Transition -->
     <div
       :class="['background-overlay', fadeIn ? 'visible' : 'hidden']"
       :style="{ backgroundImage: 'url(' + currentBackground + ')' }"
     ></div>
 
-    <!-- Particle Container -->
     <div id="particles-js"></div>
 
-    <!-- RPG Header -->
     <Header />
 
-    <!-- Hero Section -->
     <section id="hero">
       <HeroSection />
     </section>
 
-    <!-- About Section -->
     <section id="about">
       <AboutSection />
     </section>
 
-    <!-- Experience Section -->
     <section id="experience">
       <ExperienceSection />
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
       <ProjectsSection />
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
       <ContactSection />
     </section>
 
-    <!-- RPG Footer -->
     <Footer />
 
   </div>
@@ -72,7 +63,7 @@ export default {
         new URL('@/assets/4.jpg', import.meta.url).href,
         new URL('@/assets/5.jpg', import.meta.url).href,
       ],
-      fadeIn: true, // Manages fade-in effect
+      fadeIn: true,
     };
   },
   computed: {
@@ -82,13 +73,12 @@ export default {
   },
   methods: {
     changeBackground() {
-      this.fadeIn = false; // Trigger the fade-out effect
+      this.fadeIn = false;
 
-      // Wait for the fade-out to complete before changing the background
       setTimeout(() => {
         this.currentBackgroundIndex = (this.currentBackgroundIndex + 1) % this.backgrounds.length;
-        this.fadeIn = true; // Trigger the fade-in effect
-      }, 2000); // Duration of the fade-out effect
+        this.fadeIn = true;
+      }, 2000);
     },
     initializeParticles() {
       particlesJS("particles-js", {
@@ -155,13 +145,12 @@ export default {
   },
   mounted() {
     this.initializeParticles();
-    setInterval(this.changeBackground, 20000); // Background changes every 5 seconds
+    setInterval(this.changeBackground, 20000);
   },
 };
 </script>
 
 <style scoped>
-/* Particle effect stays on top */
 #particles-js {
   position: fixed;
   width: 100%;

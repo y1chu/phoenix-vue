@@ -1,0 +1,114 @@
+{
+    "aboutMe": {
+        "title": "About Me",
+        "intro": "Hello! I'm Ingrid Chu. Navigating the world of computer science, I've always been drawn to the intersection of innovation and impactful solutions. My journey took root at UC San Diego, where I not only honed my skills but also engaged in dynamic projects that challenged the boundaries of traditional development.",
+        "details": "Over the years, I've had the opportunity to delve into various facets of tech, from robust application development to understanding the nuances of game-inspired programming. With each project, I carry forward my commitment to quality and a vision of merging tech with creativity. As the digital landscape continually evolves, I'm excited about the boundless opportunities that lie ahead.",
+        "technologiesTitle": "Technologies I've been working with recently:",
+        "technologies": {
+            "vue": "Vue.js, Nuxt 2",
+            "c": "C, C++, C#",
+            "java": "Java",
+            "html": "HTML, CSS, JS",
+            "unity": "Unity"
+        }
+    },
+    "hero": {
+        "smallIntro": "Hello there! I'm",
+        "bigName": "Ingrid Chu",
+        "middleIntro": "I play games, and I make them.",
+        "smallDescription": "I'm a software engineer with a B.S. in Mathematics and Computer Science from UC San Diego. Skilled in Unity game development and backed by expertise in C# and C++, I bridge the gap between tech and artistry, inspired by gaming legends like Final Fantasy X."
+    },
+    "experience": {
+        "title": "Experience",
+        "jobs": {
+            "playmeow": {
+                "company": "PlayMeow",
+                "title": "Software Engineer",
+                "dates": "Aug 2023 - Present",
+                "description": {
+                    "0": "Developed the mobile game interface tailored for visual novels, optimizing game effects and rendering within Unity.",
+                    "1": "Frontend development using Vue.js and Nuxt 2, contributing to the web engine architecture and interface development.",
+                    "2": "Integrated Vue-based components to improve user interaction and web performance, ensuring responsive design and seamless cross-platform experience."
+                }
+            },
+            "ucsd": {
+                "company": "UC San Diego",
+                "title": "Computer Science Teacher's Assistant",
+                "dates": "Sep 2021 - Mar 2024",
+                "description": {
+                    "0": "Assisted instructors in proctoring exams, grading quizzes and programming assignments, and addressing student inquiries on the Piazza class forum.",
+                    "1": "Conducted lab sessions to support students in debugging Java code and navigating the Unix command line.",
+                    "2": "Facilitated review sessions and discussions for over 300 students to prepare for quizzes and weekly programming assignments."
+                }
+            },
+            "cosmos": {
+                "company": "COSMOS",
+                "title": "Cluster Assistant",
+                "dates": "Jun 2023 - Aug 2023",
+                "description": {
+                    "0": "Collaborated with the COSMOS cluster lead faculty to support the implementation of academic course content during the COSMOS Summer 2023 program.",
+                    "1": "Assisted with lab experiences and provided essential support to lead faculty members.",
+                    "2": "Coordinated with COSMOS Program representatives to ensure smooth execution of assigned cluster courses, including content delivery and resource management."
+                }
+            }
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "liveDemo": "Official Site",
+        "videoWalkthrough": "Video Walkthrough",
+        "contributions": "Contributions:",
+        "acgCreator": {
+            "name": "ACGCreator - Web Game Engine",
+            "description": "ACGCreator is an interactive visual novel game engine that allows creators to build immersive storytelling experiences without any coding background. I contributed to both the frontend and backend, focusing on optimizing the game’s performance and enhancing user experience.",
+            "techStack": {
+                "unity": "Unity",
+                "cSharp": "C#",
+                "vueJs": "Vue.js",
+                "nuxtJs": "Nuxt.js"
+            },
+            "contributions": {
+                "frontend": "Frontend Development: Implemented key components of the game editor using Vue.js and Nuxt.js, focusing on the design and functionality of the web engine.",
+                "mobileOptimization": "Mobile Optimization: Tailored the visual novel interface for mobile platforms using Unity, ensuring smooth performance across devices.",
+                "webInterface": "Web Interface Development: Contributed to the architecture and layout of the web editor, allowing creators to easily build and preview their games."
+            }
+        },
+        "creatorStudio": {
+            "name": "ACGCreator - Creator Studio",
+            "description": "The Creator Studio is the central hub for game developers to manage and publish their visual novel projects. It allows creators to upload assets, set pricing, and submit their games for review before publishing.",
+            "techStack": {
+                "vueJs": "Vue.js",
+                "nuxtJs": "Nuxt.js",
+                "graphQl": "GraphQL",
+                "nodeJs": "Node.js"
+            },
+            "contributions": {
+                "assetManagement": "Asset Management: Developed the interface for creators to upload and manage screenshots, trailers, and other game assets.",
+                "pricingMonetization": "Pricing & Monetization: Implemented functionality for creators to set the price for their games and manage in-app purchases.",
+                "submissionFlow": "Game Submission Flow: Designed and implemented the workflow for creators to submit their games for review, enabling an efficient review process for the team.",
+                "approvalPublishing": "Approval & Publishing: Contributed to the review system that allows admins to review submissions and either approve or reject games based on quality and compliance."
+            }
+        },
+        "drPortfolio": {
+            "name": "Personal Portfolio - Dr. Chu",
+            "description": "A custom-built personal portfolio for Dr. William Chu, showcasing his professional background, past work, experience, education, awards, and research contributions. Includes an integrated blog system and a secure login feature for managing posts.",
+            "techStack": {
+                "vueJs": "Vue.js",
+                "nuxtJs": "Nuxt.js",
+                "firebase": "Firebase",
+                "contentful": "Contentful"
+            },
+            "contributions": {
+                "blogSystem": "Blog System: Developed a fully functional blog feature where Dr. Chu can write and post articles, enabling him to share his research and thoughts.",
+                "portfolioShowcase": "Portfolio Showcase: Created an area for showcasing Dr. Chu's significant research work and contributions, with the ability to upload project descriptions and images.",
+                "firebaseAuth": "Firebase Authentication: Set up a login system using Firebase.",
+                "adminDashboard": "Admin Dashboard: Built an admin interface for easy management of posts."
+            }
+        }
+    },
+    "contact": {
+        "header": "Want to know more?",
+        "description": "Whether you'd like to debate which Final Fantasy reigns supreme, have questions about FFXIV, or are interested in working together, I'd love to hear from you! Feel free to reach out to me via email or LinkedIn.",
+        "buttonText": "Contact Me!"
+    }
+}

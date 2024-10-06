@@ -1,29 +1,26 @@
 <template>
     <section class="experience" data-aos="fade-up">
-        <!-- Title positioned above both the list and details -->
         <div class="experience-container">
-            <!-- Sidebar: List of Jobs/Companies -->
             <div class="experience-list">
-                <h2 class="experience-title">Experience</h2>
+                <h2 class="experience-title">{{ $t('experience.title') }}</h2>
                 <ul>
                     <li v-for="(job, index) in jobs" :key="job.company" :class="{ active: selectedJobIndex === index }"
                         @click="selectJob(index)">
-                        {{ job.company }}
+                        {{ $t(`experience.jobs.${job.company}.company`) }}
                     </li>
                 </ul>
             </div>
 
-            <!-- Right Side: Job Details -->
             <div class="experience-details">
                 <transition name="custom-slide" mode="out-in">
                     <div v-if="selectedJob" :key="selectedJob.company" class="job-details">
-                        <h3>{{ selectedJob.title }}
-                            <a :href="selectedJob.url" target="_blank" class="company-name">@ {{ selectedJob.company
-                                }}</a>
+                        <h3>{{ $t(`experience.jobs.${selectedJob.company}.title`) }}
+                            <a :href="selectedJob.url" target="_blank" class="company-name">@ {{
+                                $t(`experience.jobs.${selectedJob.company}.company`) }}</a>
                         </h3>
-                        <p class="date">{{ selectedJob.dates }}</p>
-                        <p v-for="(desc, i) in selectedJob.description" :key="i" class="job-description">
-                            {{ desc }}
+                        <p class="date">{{ $t(`experience.jobs.${selectedJob.company}.dates`) }}</p>
+                        <p v-for="i in 3" :key="i" class="job-description">
+                            {{ $t(`experience.jobs.${selectedJob.company}.description.${i - 1}`) }}
                         </p>
                     </div>
                 </transition>
@@ -36,40 +33,19 @@
 export default {
     data() {
         return {
-            selectedJobIndex: 0, // Default job is PlayMeow
+            selectedJobIndex: 0,
             jobs: [
                 {
-                    company: "PlayMeow",
-                    title: "Software Engineer",
-                    dates: "Aug 2023 - Present",
-                    url: "https://acgcreator.com", // Add the company's URL
-                    description: [
-                        "Developed the mobile game interface tailored for visual novels, optimizing game effects and rendering within Unity.",
-                        "Frontend development using Vue.js and Nuxt 2, contributing to the web engine architecture and interface development.",
-                        "Integrated Vue-based components to improve user interaction and web performance, ensuring responsive design and seamless cross-platform experience."
-                    ]
+                    company: "playmeow",
+                    url: "https://acgcreator.com"
                 },
                 {
-                    company: "UC San Diego",
-                    title: "Computer Science Teacher's Assistant",
-                    dates: "Sep 2021 - Mar 2024",
-                    url: "https://jacobsschool.ucsd.edu",
-                    description: [
-                        "Assisted instructors in proctoring exams, grading quizzes and programming assignments, and addressing student inquiries on the Piazza class forum.",
-                        "Conducted lab sessions to support students in debugging Java code and navigating the Unix command line.",
-                        "Facilitated review sessions and discussions for over 300 students to prepare for quizzes and weekly programming assignments."
-                    ]
+                    company: "ucsd",
+                    url: "https://jacobsschool.ucsd.edu"
                 },
                 {
-                    company: "COSMOS",
-                    title: "Cluster Assistant",
-                    dates: "Jun 2023 - Aug 2023",
-                    url: "https://jacobsschool.ucsd.edu/cosmos",
-                    description: [
-                        "Collaborated with the COSMOS cluster lead faculty to support the implementation of academic course content during the COSMOS Summer 2023 program.",
-                        "Assisted with lab experiences and provided essential support to lead faculty members.",
-                        "Coordinated with COSMOS Program representatives to ensure smooth execution of assigned cluster courses, including content delivery and resource management."
-                    ]
+                    company: "cosmos",
+                    url: "https://jacobsschool.ucsd.edu/cosmos"
                 }
             ]
         };
@@ -111,7 +87,6 @@ export default {
 
         li {
             position: relative;
-            /* Ensure relative positioning for pseudo-elements */
             cursor: pointer;
             padding: 1rem;
             background: rgba(255, 69, 0, 0.1);
@@ -120,7 +95,6 @@ export default {
             transition: all 0.5s ease;
             color: #ffffff;
 
-            /* Create background overlay */
             &::before {
                 content: '';
                 position: absolute;
@@ -132,16 +106,13 @@ export default {
                 background-color: rgba(255, 255, 255, 0.1);
                 transition: all 0.3s;
                 border-radius: inherit;
-                /* Ensure the background overlay matches rounded corners */
             }
 
             &:hover::before {
                 opacity: 0;
                 transform: scale(0.5, 0.5);
-                /* Shrink the background effect */
             }
 
-            /* Add border animation */
             &::after {
                 content: '';
                 position: absolute;
@@ -160,12 +131,10 @@ export default {
             &:hover::after {
                 opacity: 1;
                 transform: scale(1, 1);
-                /* Reset the scale to normal */
             }
 
             &:hover {
                 z-index: 2;
-                /* Bring hovered element on top */
             }
         }
 
@@ -201,7 +170,6 @@ export default {
         margin-bottom: 1rem;
     }
 
-    /* Style for the company name */
     .company-name {
         color: rgba(89, 230, 199, 255);
         font-style: italic;
@@ -209,13 +177,11 @@ export default {
         transition: color 0.3s ease;
     }
 
-    /* Add hover effect for the company name link */
     .company-name:hover {
         color: #1eff00;
     }
 }
 
-/* Custom Transition */
 .custom-slide-enter-active {
     animation: slide-in-elliptic-right-fwd 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -225,7 +191,6 @@ export default {
 }
 
 
-/* Cross-Fade animations */
 @-webkit-keyframes slide-in-elliptic-right-fwd {
     0% {
         -webkit-transform: translateX(800px) rotateY(-30deg) scale(0);

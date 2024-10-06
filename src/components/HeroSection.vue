@@ -1,13 +1,13 @@
 <template>
     <section class="hero">
         <div class="hero-content">
-            <p class="small-intro">Hello there! I'm</p>
-            <h1 class="big-name">Ingrid Chu</h1>
-            <p class="middle-intro">I play games, and I make them.</p>
+            <p class="small-intro">{{ $t('hero.smallIntro') }}</p>
+            <h1 class="big-name" :class="{ 'japanese-font-size': isJapanese }">
+                {{ $t('hero.bigName') }}
+            </h1>
+            <p class="middle-intro">{{ $t('hero.middleIntro') }}</p>
             <p class="small-description">
-                I'm a software engineer with a B.S. in Mathematics and Computer Science from UC San Diego. 
-                Skilled in Unity game development and backed by expertise in C# and C++, I bridge the gap between 
-                tech and artistry, inspired by gaming legends like Final Fantasy X.
+                {{ $t('hero.smallDescription') }}
             </p>
         </div>
     </section>
@@ -15,7 +15,12 @@
 
 <script>
 export default {
-    name: 'HeroSection'
+    name: 'HeroSection',
+    computed: {
+        isJapanese() {
+            return this.$i18n.locale === 'ja';
+        }
+    }
 };
 </script>
 
@@ -30,7 +35,7 @@ export default {
 
     .hero-content {
         max-width: 600px;
-        
+
         .small-intro {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
@@ -43,6 +48,10 @@ export default {
             letter-spacing: 3px;
             margin-bottom: 1rem;
             color: #ffe600;
+        }
+
+        .japanese-font-size {
+            font-size: 3.5rem;
         }
 
         .middle-intro {

@@ -1,6 +1,5 @@
 <template>
     <footer class="footer">
-        <!-- Social Media Icons -->
         <div class="footer-icons">
             <button class="icon-btn" @click="openLink('https://www.youtube.com/channel/UCgW0O1BlHVrl1WfIZ6rG0Aw')" aria-label="YouTube">
                 <font-awesome-icon :icon="['fab', 'youtube']" />
@@ -13,7 +12,6 @@
             </button>
         </div>
 
-        <!-- Email -->
         <div class="footer-email">
             <a href="mailto:y1chu@ucsd.edu">y1chu@ucsd.edu</a>
         </div>
@@ -25,7 +23,7 @@ export default {
     name: 'Footer',
     methods: {
         openLink(url) {
-            window.open(url, '_blank'); // Opens the link in a new tab
+            window.open(url, '_blank');
         }
     }
 };
@@ -44,7 +42,6 @@ export default {
     z-index: 10;
 }
 
-/* Icon Button Styling */
 .icon-btn {
     background: none;
     border: none;
@@ -55,12 +52,10 @@ export default {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Hover effect for the icon buttons */
 .icon-btn:hover {
-    transform: scale(1.2); /* Smooth scaling effect */
+    transform: scale(1.2);
 }
 
-/* Email Link Styling */
 .footer-email a {
     position: relative;
     color: #ffffff;
@@ -69,7 +64,6 @@ export default {
     transition: color 0.3s ease;
 }
 
-/* Underline animation for email */
 .footer-email a::after {
     content: "";
     position: absolute;

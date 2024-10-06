@@ -1,16 +1,14 @@
 <template>
     <section class="contact" data-aos="fade-up">
         <div class="contact-container">
-            <h2 class="contact-header">Want to know more?</h2>
+            <h2 class="contact-header">{{ $t('contact.header') }}</h2>
             <p class="contact-description">
-                Whether you'd like to debate which Final Fantasy reigns supreme, have questions about FFXIV, or are
-                interested in working together, I'd love to hear from you! Feel free to reach out to me via email or
-                LinkedIn.
+                {{ $t('contact.description') }}
             </p>
             <div class="contact-button-container">
                 <a href="mailto:y1chu@ucsd.edu" class="contact-btn">
                     <font-awesome-icon icon="envelope" class="icon" />
-                    <span class="t">Contact Me!</span>
+                    <span class="t">{{ $t('contact.buttonText') }}</span>
                 </a>
             </div>
         </div>
@@ -80,7 +78,7 @@ export default {
 
 .contact-btn span {
     position: relative;
-    z-index: 2; /* Keep text on top of background */
+    z-index: 2;
 }
 
 .contact-btn:after {
@@ -107,7 +105,8 @@ export default {
 .contact-btn .icon {
     font-size: 18px;
     margin-right: 10px;
-    z-index: 2; /* Keep the icon on top */
+    z-index: 2;
+    /* Keep the icon on top */
     transition: all 0.35s;
 }
 </style>
